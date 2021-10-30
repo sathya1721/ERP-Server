@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const indentModel = require("../../models/indents.model");
 
 exports.createIndent = async (req, res) => {
-  console.log(req.body);
   try {
     let indentToCreate = await new indentModel(req.body);
     await indentToCreate.save();
@@ -42,6 +41,7 @@ exports.updateIndent = async (req, res) => {
 };
 
 exports.deleteIndent = async (req, res) => {
+  console.log(req.id);
   try {
     let indentToDelete = await indentModel.findByIdAndDelete({
       store_id: mongoose.Types.ObjectId(req.id),
