@@ -1,14 +1,24 @@
-'use strict';
-const router = require('express').Router();
-const locationController = require('../controllers/store/location.controller');
+"use strict";
+const router = require("express").Router();
+const indentController = require("../controllers/store/indent.controller");
+const locationController = require("../controllers/store/location.controller");
 
 // locations
 router
-    .route('/locations')
-    .get(locationController.list)
-    .post(locationController.add)
-    .put(locationController.update)
-    .patch(locationController.soft_remove)
+  .route("/locations")
+  .get(locationController.list)
+  .post(locationController.add)
+  .put(locationController.update)
+  .patch(locationController.soft_remove);
+
+// Indents
+
+router
+  .route("/indents")
+  .get(indentController.getAllIndents)
+  .post(indentController.createIndent)
+  .put(indentController.updateIndent)
+  .delete(indentController.deleteIndent);
 
 // const storeController = require('../controllers/store/store.controller');
 // const catalogController = require('../controllers/store/catalog.controller');
