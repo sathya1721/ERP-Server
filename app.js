@@ -230,6 +230,7 @@ function verifyToken(req, res, next) {
     if (token) {
       jwt.verify(token, jwtConfig.jwtSecretKey, function (err, response) {
         if (!err && response) {
+          console.log("if res", response.id);
           req.id = response.id;
           req.user_type = response.user_type;
           // admin

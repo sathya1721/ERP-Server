@@ -1,13 +1,5 @@
 const mongoose = require("mongoose");
 
-const supplierSchema = new mongoose.Schema({
-  company_name: String,
-  reason: String,
-  contact_person: String,
-  mobile: Number,
-  comp_address: String,
-});
-
 const requirementSchema = new mongoose.Schema({
   material: String,
   quantity: Number,
@@ -17,10 +9,15 @@ const requirementSchema = new mongoose.Schema({
   total: Number,
 });
 
-const indentSchema = new mongoose.Schema({
-  //   emp_id: Number,
-  //   test: String,
-  store_id: { type: mongoose.Schema.Types.ObjectId, required: true },
+const supplierSchema = new mongoose.Schema({
+  company_name: String,
+  reason: String,
+  contact_person: String,
+  mobile: Number,
+  comp_address: String,
+});
+
+const indentListSchema = new mongoose.Schema({
   type: String,
   location: String,
   department: String,
@@ -32,6 +29,12 @@ const indentSchema = new mongoose.Schema({
   cancel_status: Number,
   mail_status: String,
   mail_datetime: Date,
+});
+
+const indentSchema = new mongoose.Schema({
+  store_id: { type: mongoose.Schema.Types.ObjectId, required: true },
+  created_on: { type: Date, default: Date.now },
+  indent_list: [indentListSchema],
 });
 
 const collections = mongoose.model("indents", indentSchema);

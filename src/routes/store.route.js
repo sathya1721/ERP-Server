@@ -18,7 +18,10 @@ router
   .get(indentController.getAllIndents)
   .post(indentController.createIndent)
   .put(indentController.updateIndent)
-  .delete(indentController.deleteIndent);
+  .patch(indentController.PatchIndent);
+
+//update store
+router.route("/indent_config").put(locationController.update_config);
 
 // const storeController = require('../controllers/store/store.controller');
 // const catalogController = require('../controllers/store/catalog.controller');
