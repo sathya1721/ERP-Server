@@ -60,6 +60,21 @@ exports.add = (req, res) => {
   );
 };
 
+exports.details = (req, res) => {
+    locations.findOne({ store_id: mongoose.Types.ObjectId(req.id) }, function(err, response) {
+        // console.log(response);
+        if(!err && response) {
+            let locationList = response.location_list;
+            let index = locationList.findIndex(object => object._id == req.body._id);
+            console.log(index);
+            res.json({ status: true, data: locationList[index] });
+        }
+        else {
+            res.json({ status: false, error: err, message: "Failure" });
+        }
+    });
+}
+
 exports.update = (req, res) => {
   locations.findOne(
     { store_id: mongoose.Types.ObjectId(req.id) },
