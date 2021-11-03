@@ -1,6 +1,10 @@
 'use strict';
 const router = require('express').Router();
 const locationController = require('../controllers/store/location.controller');
+const departmentController = require('../controllers/store/department.controller')
+const designationController = require('../controllers/store/designation.controller');
+const product_typeController = require('../controllers/store/product_type.controller');
+const product_categoryController = require('../controllers/store/product_category.controller')
 
 // locations
 router
@@ -9,6 +13,62 @@ router
     .post(locationController.add)
     .put(locationController.update)
     .patch(locationController.soft_remove)
+
+router
+    .route('/locations/details')
+    .post(locationController.details)
+
+// department
+router
+    .route('/department')
+    .get(departmentController.list)
+    .post(departmentController.add)
+    .put(departmentController.update)
+    .patch(departmentController.soft_remove)
+    // .patch(departmentController.hard_remove)
+
+router
+    .route('/department/details')
+    .post(departmentController.details)
+
+// deisgnation
+router
+    .route('/designation')
+    .get(designationController.list)
+    .post(designationController.add)
+    .put(designationController.update)
+    .patch(designationController.soft_remove)
+    // .patch(designationController.hard_remove)
+
+router
+    .route('/designation/details')
+    .post(designationController.details)
+
+// product type
+router
+    .route('/product_type')
+    .get(product_typeController.list)
+    .post(product_typeController.add)
+    .put(product_typeController.update)
+    .patch(product_typeController.soft_remove)
+    // .patch(product_typeController.hard_remove)
+
+router
+    .route('/product_type/details')
+    .post(product_typeController.details)
+
+// product category
+router
+    .route('/product_category')
+    .get(product_categoryController.list)
+    .post(product_categoryController.add)
+    .put(product_categoryController.update)
+    .patch(product_categoryController.soft_remove)
+    // .patch(product_categoryController.hard_remove)
+
+router
+    .route('/product_category/details')
+    .post(product_categoryController.details)
 
 // const storeController = require('../controllers/store/store.controller');
 // const catalogController = require('../controllers/store/catalog.controller');
