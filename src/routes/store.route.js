@@ -4,7 +4,8 @@ const locationController = require('../controllers/store/location.controller');
 const departmentController = require('../controllers/store/department.controller')
 const designationController = require('../controllers/store/designation.controller');
 const product_typeController = require('../controllers/store/product_type.controller');
-const product_categoryController = require('../controllers/store/product_category.controller')
+const product_categoryController = require('../controllers/store/product_category.controller');
+const vendorController = require('../controllers/store/vendor.controller');
 
 // locations
 router
@@ -69,6 +70,19 @@ router
 router
     .route('/product_category/details')
     .post(product_categoryController.details)
+
+// vendor
+router
+    .route('/vendor')
+    .get(vendorController.list)
+    .post(vendorController.add)
+    .put(vendorController.update)
+    .patch(vendorController.soft_remove)
+    // .patch(vendorController.hard_remove)
+
+router
+    .route('/vendor/details')
+    .post(vendorController.details)
 
 // const storeController = require('../controllers/store/store.controller');
 // const catalogController = require('../controllers/store/catalog.controller');

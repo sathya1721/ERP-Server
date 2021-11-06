@@ -4,7 +4,8 @@ const departmentsSchema = new mongoose.Schema({
 	store_id: { type: mongoose.Schema.Types.ObjectId, required: true },
     created_on: { type: Date, default: Date.now },  
     department : { type : String },
-    status: { type: String, default : "active" }
+    status: { type: String, default : "active" },
+    emp_id : { type : String }
 });
 
 const collections = mongoose.model('departments', departmentsSchema);

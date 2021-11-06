@@ -5,7 +5,8 @@ const designationSchema = new mongoose.Schema({
     created_on: { type: Date, default: Date.now },  
     department : { type : String },
     designation : { type : String },
-    status: { type: String, default : "active" }
+    status: { type: String, default : "active" },
+    emp_id : { type : String }
 });
 
 const collections = mongoose.model('user_designation', designationSchema);
