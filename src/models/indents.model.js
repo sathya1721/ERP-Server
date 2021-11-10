@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const requirementSchema = new mongoose.Schema({
   material: String,
   quantity: Number,
@@ -21,7 +20,7 @@ const indentListSchema = new mongoose.Schema({
   type: String,
   location: String,
   department: String,
-  prf_date: { type: Date, default: Date.now },
+  prf_date: String,
   prf_number: String,
   purpose: String,
   requirement_list: [requirementSchema],

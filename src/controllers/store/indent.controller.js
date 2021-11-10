@@ -13,6 +13,23 @@ exports.getAllIndents = (req, res) => {
     }
   );
 };
+exports.details = (req, res) => {
+  indentModel.findOne(
+    { store_id: mongoose.Types.ObjectId(req.id) },
+    function (err, response) {
+      if (!err && response) {
+        let indentList = response.indent_list;
+        let index = indentList.findIndex(
+          (object) => object._id == req.body._id
+        );
+        console.log(index);
+        res.json({ status: true, data: indentList[index] });
+      } else {
+        res.json({ status: false, error: err, message: "Failure" });
+      }
+    }
+  );
+};
 
 exports.createIndent = (req, res) => {
   indentModel.findOne(
@@ -62,27 +79,6 @@ exports.updateIndent = (req, res) => {
     function (err, response) {
       if (!err && response) {
         let indentList = response.indent_list;
-        // if (req.body.prev_rank < req.body.rank) {
-        //   // dec rank
-        //   indentList.forEach((object) => {
-        //     if (
-        //       req.body.prev_rank < object.rank &&
-        //       req.body.rank >= object.rank
-        //     ) {
-        //       object.rank = object.rank - 1;
-        //     }
-        //   });
-        // } else if (req.body.prev_rank > req.body.rank) {
-        //   // inc rank
-        //   indentList.forEach((object) => {
-        //     if (
-        //       req.body.prev_rank > object.rank &&
-        //       req.body.rank <= object.rank
-        //     ) {
-        //       object.rank = object.rank + 1;
-        //     }
-        //   });
-        // }
         let index = indentList.findIndex(
           (object) => object._id == req.body._id
         );
