@@ -9,67 +9,72 @@ const vendorController = require('../controllers/store/vendor.controller');
 
 // locations
 router
-    .route('/locations')
-    .get(locationController.list)
-    .post(locationController.add)
-    .put(locationController.update)
-    .patch(locationController.soft_remove)
+  .route("/locations")
+  .get(locationController.list)
+  .post(locationController.add)
+  .put(locationController.update)
+  .patch(locationController.soft_remove);
+
+// Indents
 
 router
-    .route('/locations/details')
-    .post(locationController.details)
+  .route("/indents")
+  .get(indentController.getAllIndents)
+  .post(indentController.createIndent)
+  .put(indentController.updateIndent)
+  .patch(indentController.PatchIndent);
+
+router.route("/indents/details").post(indentController.details);
+//update store
+router.route("/indent_config").put(locationController.update_config);
+
+router.route("/locations/details").post(locationController.details);
 
 // department
 router
-    .route('/department')
-    .get(departmentController.list)
-    .post(departmentController.add)
-    .put(departmentController.update)
-    .patch(departmentController.soft_remove)
-    // .patch(departmentController.hard_remove)
+  .route("/department")
+  .get(departmentController.list)
+  .post(departmentController.add)
+  .put(departmentController.update)
+  .patch(departmentController.soft_remove);
+// .patch(departmentController.hard_remove)
 
-router
-    .route('/department/details')
-    .post(departmentController.details)
+router.route("/department/details").post(departmentController.details);
 
 // deisgnation
 router
-    .route('/designation')
-    .get(designationController.list)
-    .post(designationController.add)
-    .put(designationController.update)
-    .patch(designationController.soft_remove)
-    // .patch(designationController.hard_remove)
+  .route("/designation")
+  .get(designationController.list)
+  .post(designationController.add)
+  .put(designationController.update)
+  .patch(designationController.soft_remove);
+// .patch(designationController.hard_remove)
 
-router
-    .route('/designation/details')
-    .post(designationController.details)
+router.route("/designation/details").post(designationController.details);
 
 // product type
 router
-    .route('/product_type')
-    .get(product_typeController.list)
-    .post(product_typeController.add)
-    .put(product_typeController.update)
-    .patch(product_typeController.soft_remove)
-    // .patch(product_typeController.hard_remove)
+  .route("/product_type")
+  .get(product_typeController.list)
+  .post(product_typeController.add)
+  .put(product_typeController.update)
+  .patch(product_typeController.soft_remove);
+// .patch(product_typeController.hard_remove)
 
-router
-    .route('/product_type/details')
-    .post(product_typeController.details)
+router.route("/product_type/details").post(product_typeController.details);
 
 // product category
 router
-    .route('/product_category')
-    .get(product_categoryController.list)
-    .post(product_categoryController.add)
-    .put(product_categoryController.update)
-    .patch(product_categoryController.soft_remove)
-    // .patch(product_categoryController.hard_remove)
+  .route("/product_category")
+  .get(product_categoryController.list)
+  .post(product_categoryController.add)
+  .put(product_categoryController.update)
+  .patch(product_categoryController.soft_remove);
+// .patch(product_categoryController.hard_remove)
 
 router
-    .route('/product_category/details')
-    .post(product_categoryController.details)
+  .route("/product_category/details")
+  .post(product_categoryController.details);
 
 // vendor
 router
