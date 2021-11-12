@@ -6,6 +6,8 @@ const designationController = require('../controllers/store/designation.controll
 const product_typeController = require('../controllers/store/product_type.controller');
 const product_categoryController = require('../controllers/store/product_category.controller');
 const vendorController = require('../controllers/store/vendor.controller');
+const indentController = require('../controllers/store/indent.controller');
+const materialsController = require('../controllers/store/materials.controller');
 
 // locations
 router
@@ -88,6 +90,19 @@ router
 router
     .route('/vendor/details')
     .post(vendorController.details)
+
+// materials
+router
+    .route('/materials')
+    .get(materialsController.list)
+    .post(materialsController.add)
+    .put(materialsController.update)
+    .patch(materialsController.soft_remove)
+    // .patch(materialsController.hard_remove)
+
+router
+    .route('/materials/details')
+    .post(materialsController.details)
 
 // const storeController = require('../controllers/store/store.controller');
 // const catalogController = require('../controllers/store/catalog.controller');
