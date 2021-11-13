@@ -23,8 +23,8 @@ router
   .post(indentController.createIndent)
   .put(indentController.updateIndent)
   .patch(indentController.PatchIndent);
-
 router.route("/indents/details").post(indentController.details);
+
 //update store
 router.route("/indent_config").put(locationController.update_config);
 
