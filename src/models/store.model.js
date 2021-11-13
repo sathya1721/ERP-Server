@@ -34,6 +34,7 @@ const paymentSchema = new mongoose.Schema({
 
 const storeSchema = new mongoose.Schema({
     dealer_id: { type: mongoose.Schema.Types.ObjectId },
+    emp_id : { type : String },
 	name: { type: String, required: true },
     email: { type: String, required: true },
     website: { type: String },

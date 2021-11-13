@@ -25,7 +25,8 @@ const locListSchema = new mongoose.Schema({
 const locationSchema = new mongoose.Schema({
 	store_id: { type: mongoose.Schema.Types.ObjectId, required: true },
     created_on: { type: Date, default: Date.now },  
-    location_list: [locListSchema]
+    location_list: [locListSchema],
+    emp_id : { type : String }
 });
 
 const collections = mongoose.model('locations', locationSchema);
