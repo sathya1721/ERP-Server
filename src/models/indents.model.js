@@ -25,8 +25,8 @@ const indentListSchema = new mongoose.Schema({
   purpose: String,
   requirement_list: [requirementSchema],
   supplier_list: [supplierSchema],
+  mail_status: String,
   // cancel_status: Number,
-  // mail_status: String,
   // mail_datetime: Date,
 });
 
