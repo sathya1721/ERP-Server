@@ -41,6 +41,25 @@ exports.details = (req, res) => {
     });
 }
 
+exports.get_material_code = (req, res) => {
+    materials.find({ store_id: mongoose.Types.ObjectId(req.id), category: req.body.name }, function(err, response) {              
+        if(!err && response[0]) 
+        {            
+
+            let material_code =  req.body.short_name + '-' +String(response.length+1).padStart(4, '0');
+            // console.log("old", material_code);
+            res.json({ status: true, message: "Old Category", data : material_code });
+
+        }
+        else 
+        {            
+            let material_code = req.body.short_name + '-' +'0001';
+            // console.log("new", material_code);
+            res.json({ status: true, message: "New Category", data : material_code });
+        }
+    });
+}
+
 exports.update = (req, res) => {
     materials.findOne({ store_id: mongoose.Types.ObjectId(req.id), _id : mongoose.Types.ObjectId(req.body._id) }, function(err, response) {
         if(!err && response) {
