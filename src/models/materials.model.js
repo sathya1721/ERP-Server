@@ -7,6 +7,7 @@ const materialsSchema = new mongoose.Schema({
     emp_id : { type : String },
     type : { type : String },
     category : { type : String },
+    short_name : { type : String },
     hsn_code : { type : String },
     material_code : { type : String },
     name : { type : String },

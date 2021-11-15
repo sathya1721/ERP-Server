@@ -104,6 +104,10 @@ router
     .route('/materials/details')
     .post(materialsController.details)
 
+router
+    .route('/materials/get_material_code')
+    .post(materialsController.get_material_code)
+
 // const storeController = require('../controllers/store/store.controller');
 // const catalogController = require('../controllers/store/catalog.controller');
 // const menuController = require('../controllers/store/menu.controller');
