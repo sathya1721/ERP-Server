@@ -1,13 +1,13 @@
-'use strict';
-const router = require('express').Router();
-const locationController = require('../controllers/store/location.controller');
-const departmentController = require('../controllers/store/department.controller')
-const designationController = require('../controllers/store/designation.controller');
-const product_typeController = require('../controllers/store/product_type.controller');
-const product_categoryController = require('../controllers/store/product_category.controller');
-const vendorController = require('../controllers/store/vendor.controller');
-const indentController = require('../controllers/store/indent.controller');
-const materialsController = require('../controllers/store/materials.controller');
+"use strict";
+const router = require("express").Router();
+const locationController = require("../controllers/store/location.controller");
+const departmentController = require("../controllers/store/department.controller");
+const designationController = require("../controllers/store/designation.controller");
+const product_typeController = require("../controllers/store/product_type.controller");
+const product_categoryController = require("../controllers/store/product_category.controller");
+const vendorController = require("../controllers/store/vendor.controller");
+const indentController = require("../controllers/store/indent.controller");
+const materialsController = require("../controllers/store/materials.controller");
 
 // locations
 router
@@ -24,7 +24,8 @@ router
   .get(indentController.getAllIndents)
   .post(indentController.createIndent)
   .put(indentController.updateIndent)
-  .patch(indentController.PatchIndent);
+  // .patch(indentController.soft_remove)
+  .patch(indentController.hard_remove);
 router.route("/indents/details").post(indentController.details);
 
 //update store
@@ -80,33 +81,29 @@ router
 
 // vendor
 router
-    .route('/vendor')
-    .get(vendorController.list)
-    .post(vendorController.add)
-    .put(vendorController.update)
-    .patch(vendorController.soft_remove)
-    // .patch(vendorController.hard_remove)
+  .route("/vendor")
+  .get(vendorController.list)
+  .post(vendorController.add)
+  .put(vendorController.update)
+  .patch(vendorController.soft_remove);
+// .patch(vendorController.hard_remove)
 
-router
-    .route('/vendor/details')
-    .post(vendorController.details)
+router.route("/vendor/details").post(vendorController.details);
 
 // materials
 router
-    .route('/materials')
-    .get(materialsController.list)
-    .post(materialsController.add)
-    .put(materialsController.update)
-    .patch(materialsController.soft_remove)
-    // .patch(materialsController.hard_remove)
+  .route("/materials")
+  .get(materialsController.list)
+  .post(materialsController.add)
+  .put(materialsController.update)
+  .patch(materialsController.soft_remove);
+// .patch(materialsController.hard_remove)
+
+router.route("/materials/details").post(materialsController.details);
 
 router
-    .route('/materials/details')
-    .post(materialsController.details)
-
-router
-    .route('/materials/get_material_code')
-    .post(materialsController.get_material_code)
+  .route("/materials/get_material_code")
+  .post(materialsController.get_material_code);
 
 // const storeController = require('../controllers/store/store.controller');
 // const catalogController = require('../controllers/store/catalog.controller');
