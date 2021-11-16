@@ -16,24 +16,37 @@ const supplierSchema = new mongoose.Schema({
   comp_address: String,
 });
 
-const indentListSchema = new mongoose.Schema({
-  type: String,
-  location: String,
-  department: String,
-  prf_date: String,
-  prf_number: String,
-  purpose: String,
-  requirement_list: [requirementSchema],
-  supplier_list: [supplierSchema],
-  mail_status: String,
-  // cancel_status: Number,
-  // mail_datetime: Date,
-});
-
+// const indentListSchema = new mongoose.Schema({
+//   type: String,
+//   location: String,
+//   department: String,
+//   prf_date: String,
+//   prf_number: String,
+//   purpose: String,
+//   requirement_list: [requirementSchema],
+//   supplier_list: [supplierSchema],
+//   mail_status: String,
+//   // cancel_status: Number,
+//   // mail_datetime: Date,
+// });
 const indentSchema = new mongoose.Schema({
   store_id: { type: mongoose.Schema.Types.ObjectId, required: true },
   created_on: { type: Date, default: Date.now },
-  indent_list: [indentListSchema],
+  emp_id: String,
+  type: String,
+  status: { type: String, default: "active" },
+  prf_date: String,
+  prf_number: String,
+  purpose: String,
+  location: String,
+  department: String,
+  tax: Number,
+  sub_total: Number,
+  grand_total: Number,
+  mail_status: String,
+  cancel_status: { type: Number, default: 0 },
+  requirement_list: [requirementSchema],
+  supplier_list: [supplierSchema],
 });
 
 const collections = mongoose.model("indents", indentSchema);
