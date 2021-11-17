@@ -1,16 +1,13 @@
-'use strict';
-const router = require('express').Router();
-const commonController = require('../controllers/others/common.controller');
+"use strict";
+const router = require("express").Router();
+const commonController = require("../controllers/others/common.controller");
+const sendMail = require("../../services/mail.service");
 // const storeController = require('../controllers/others/store.controller');
 // const paymentController = require('../controllers/others/payment.controller');
 // const deployController = require('../controllers/others/deploy.controller');
 
-router
-    .route('/check_email')
-    .post(commonController.check_email_availability)
-// router
-//     .route('/subscribe_newsletter')
-//     .post(commonController.subscribe_newsletter)
+router.route("/check_email").post(commonController.check_email_availability);
+router.route("/sendmail").post(sendMail.sendMailFromStore);
 // router
 //     .route('/campaign_enquiry')
 //     .post(commonController.campaign_enquiry)
