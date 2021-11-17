@@ -41,6 +41,19 @@ exports.details = (req, res) => {
     });
 }
 
+exports.get_designation_list = (req, res) => {
+    designation.find({ store_id: mongoose.Types.ObjectId(req.id), department : req.body.department }, function(err, response) {
+        console.log(response);
+        if(!err && response) 
+        {
+            res.json({ status: true, data: response});
+        }
+        else {
+            res.json({ status: false, error: err, message: "Failure" });
+        }
+    });
+}
+
 exports.update = (req, res) => {
     designation.findOne({ store_id: mongoose.Types.ObjectId(req.id), _id : mongoose.Types.ObjectId(req.body._id) }, function(err, response) {
         if(!err && response) {
