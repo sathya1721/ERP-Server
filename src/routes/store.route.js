@@ -8,6 +8,7 @@ const product_categoryController = require("../controllers/store/product_categor
 const vendorController = require("../controllers/store/vendor.controller");
 const indentController = require("../controllers/store/indent.controller");
 const materialsController = require("../controllers/store/materials.controller");
+const userlistController = require("../controllers/store/userlist.controller");
 
 // locations
 router
@@ -54,6 +55,9 @@ router
 // .patch(designationController.hard_remove)
 
 router.route("/designation/details").post(designationController.details);
+router
+  .route("/designation/get_designation_list")
+  .post(designationController.get_designation_list);
 
 // product type
 router
@@ -104,6 +108,19 @@ router.route("/materials/details").post(materialsController.details);
 router
   .route("/materials/get_material_code")
   .post(materialsController.get_material_code);
+
+// userlist
+router
+  .route("/userlist")
+  .get(userlistController.list)
+  .post(userlistController.add)
+  .put(userlistController.update)
+  .patch(userlistController.soft_remove);
+// .patch(userlistController.hard_remove)
+
+router.route("/userlist/details").post(userlistController.details);
+
+router.route("/userlist/get_empid").get(userlistController.get_empid);
 
 // const storeController = require('../controllers/store/store.controller');
 // const catalogController = require('../controllers/store/catalog.controller');
