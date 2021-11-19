@@ -9,6 +9,7 @@ const vendorController = require("../controllers/store/vendor.controller");
 const indentController = require("../controllers/store/indent.controller");
 const materialsController = require("../controllers/store/materials.controller");
 const userlistController = require("../controllers/store/userlist.controller");
+const quoteController = require("../controllers/store/quote.controller");
 
 // locations
 router
@@ -121,6 +122,17 @@ router
 router.route("/userlist/details").post(userlistController.details);
 
 router.route("/userlist/get_empid").get(userlistController.get_empid);
+
+//Quotation
+
+router
+  .route("/quotes")
+  .get(quoteController.getAllquotes)
+  .post(quoteController.createQuote)
+  .put(quoteController.updateQuote)
+  // .patch(quoteController.soft_remove)
+  .patch(quoteController.hard_remove);
+router.route("/quotes/details").post(quoteController.details);
 
 // const storeController = require('../controllers/store/store.controller');
 // const catalogController = require('../controllers/store/catalog.controller');
