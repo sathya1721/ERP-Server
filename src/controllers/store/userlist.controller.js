@@ -35,8 +35,9 @@ exports.add = (req, res) => {
 }
 
 exports.details = (req, res) => {
-    materials.findOne({ store_id: mongoose.Types.ObjectId(req.id), _id : mongoose.Types.ObjectId(req.body._id) }, function(err, response) {
-        console.log(response);
+
+    userlist.findOne({ store_id: mongoose.Types.ObjectId(req.id), _id : mongoose.Types.ObjectId(req.body._id) }, function(err, response) 
+    {
         if(!err && response) 
         {
             res.json({ status: true, data: response});
