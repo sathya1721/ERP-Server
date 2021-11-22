@@ -22,23 +22,21 @@ const vendorSchema = new mongoose.Schema({
 });
 
 const quote_list_Schema = new mongoose.Schema({
-  type: String,
-  category: String,
-  vendor_list: [vendorSchema],
-});
-
-const quoteSchema = new mongoose.Schema({
   store_id: { type: mongoose.Schema.Types.ObjectId, required: true },
   created_on: { type: Date, default: Date.now },
+  type: String,
+  category: String,
   emp_id: Number,
   prf_number: String,
-  // quot_number: new FormControl(),
-  // quot_date: new FormControl(),
+  quote_number: String,
+  quote_date: String,
   // project_short: new FormControl(),
   // sub_category: new FormControl(),
   // description: new FormControl(),
-  quote_list: [quote_list_Schema],
+  vendor_list: [vendorSchema],
 });
+
+const quoteSchema = new mongoose.Schema([quote_list_Schema]);
 
 const collections = mongoose.model("quotations", quoteSchema);
 
