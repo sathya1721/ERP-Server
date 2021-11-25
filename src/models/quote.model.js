@@ -30,6 +30,7 @@ const quote_list_Schema = new mongoose.Schema({
   prf_number: String,
   quote_number: String,
   quote_date: String,
+  mail_status: String,
   // project_short: new FormControl(),
   // sub_category: new FormControl(),
   // description: new FormControl(),
