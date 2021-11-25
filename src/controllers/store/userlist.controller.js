@@ -33,11 +33,13 @@ exports.add = (req, res) => {
             else 
             {
                 let rootPath = 'uploads/'+req.id+'/user/';
-                singleFileUpload(req.body.profileimage, rootPath).then((profileimage) => 
+                singleFileUpload(req.body.profileimage, rootPath).then((data) => 
                 {
-                    req.body.profileimage = profileimage;
+                    req.body.profileimage = data;
+                    console.log(req.body.profileimage);
                     userlist.create(req.body, function(err, response) 
                     {
+                        console.log(req.body.store_id, )
                         if(!err && response) 
                         {
                         res.json({ status: true, data: response }); 
@@ -69,14 +71,17 @@ exports.details = (req, res) => {
 
 exports.get_empid = (req, res) => 
 {
-    userlist.find({ store_id: mongoose.Types.ObjectId(req.id) }, function(err, response) {              
+    userlist.aggregate([
+        { $match : { store_id: mongoose.Types.ObjectId(req.id) }},
+        { $sort : { created_on : -1 } }
+    ], function(err, response) {           
         if(!err && response[0]) 
-        {            
+        {          
             let emp_id = response[0].emp_id + 1;
             res.json({ status: true, message: "Old", data : emp_id });
         }
         else 
-        {            
+        {        
             let emp_id = 1001;
             res.json({ status: true, message: "New User", data : emp_id });
         }
@@ -148,7 +153,7 @@ function singleFileUpload(image, rootPath)
         }
         let randomName = 'profile-'+new Date().valueOf()+'-'+Math.floor(Math.random() * Math.floor(999999));
         let fileName = rootPath+randomName+fileType;
-        if(!fs.existsSync(rootPath)) {
+        // if(!fs.existsSync(rootPath)) {
             fs.mkdir(rootPath, { recursive: true }, (err) => {
                 if(!err) {
         fs.writeFile(fileName, base64Data, 'base64', function(err) {
@@ -160,7 +165,7 @@ function singleFileUpload(image, rootPath)
     }
     else { resolve(null); }
 });
-}
+// }
         
     });
 }
