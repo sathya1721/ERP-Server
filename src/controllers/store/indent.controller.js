@@ -31,6 +31,8 @@ exports.details = (req, res) => {
 };
 
 exports.createIndent = (req, res) => {
+  console.log("bodyyyyy",req.body);
+  
   req.body.store_id = req.id;
   indentModel.create(req.body, function (err, response) {
     if (!err && response) {
