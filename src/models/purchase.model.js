@@ -8,7 +8,6 @@ const purchaseList = new mongoose.Schema({
   unit: String,
   price: Number,
   gst: String,
-  grand_total: Number,
 });
 
 const purchaseSchema = new mongoose.Schema({
@@ -43,6 +42,7 @@ const purchaseSchema = new mongoose.Schema({
   mail_status: String,
   trans_amount: String,
   trans_tax: String,
+  grand_total: Number,
 });
 
 const collections = mongoose.model("purchases", purchaseSchema);

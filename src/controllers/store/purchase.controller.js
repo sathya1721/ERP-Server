@@ -32,6 +32,7 @@ exports.details = (req, res) => {
 
 exports.createPurchase = (req, res) => {
   req.body.store_id = req.id;
+  console.log(req.body);
   purchaseModel.create(req.body, function (err, response) {
     if (!err && response) {
       res.json({ status: true, data: response });
