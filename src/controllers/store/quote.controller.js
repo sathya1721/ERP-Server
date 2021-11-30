@@ -31,6 +31,7 @@ exports.details = (req, res) => {
 };
 
 exports.createQuote = (req, res) => {
+  console.log("bodyyyyy",req.body);
   req.body.store_id = req.id;
   quoteModel.create(req.body, function (err, response) {
     if (!err && response) {
