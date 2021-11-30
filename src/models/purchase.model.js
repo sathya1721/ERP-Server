@@ -43,6 +43,7 @@ const purchaseSchema = new mongoose.Schema({
   trans_amount: String,
   trans_tax: String,
   grand_total: Number,
+  po_status:{ type: String, default: "active" },
 });
 
 const collections = mongoose.model("purchases", purchaseSchema);
