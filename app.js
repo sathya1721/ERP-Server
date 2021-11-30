@@ -83,6 +83,7 @@ if (environment == "production") {
 const authRoutes = require("./src/routes/auth.route");
 const adminRoutes = require("./src/routes/admin.route");
 const storeRoutes = require("./src/routes/store.route");
+
 // const storeDetailRoutes = require('./src/routes/store_details.route');
 // const userRoutes = require('./src/routes/user.route');
 // const guestRoutes = require('./src/routes/guest.route');
@@ -93,6 +94,7 @@ const otherRoutes = require("./src/routes/others.route");
 app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/store", verifyToken, storeRoutes);
+
 // app.use("/store", storeRoutes);
 // app.use('/store_details', storeDetailRoutes);
 // app.use('/user', verifyToken, userRoutes);
@@ -110,6 +112,7 @@ app.get("/undefined", function (req, res) {
 app.get("/null", function (req, res) {
   res.end();
 });
+
 
 // const admin = require('./src/models/admin.model');
 const store = require("./src/models/store.model");

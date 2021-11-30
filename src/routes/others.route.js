@@ -2,12 +2,18 @@
 const router = require("express").Router();
 const commonController = require("../controllers/others/common.controller");
 const sendMail = require("../../services/mail.service");
+
+const createPDF = require('../../services/pdf_generator.service')
 // const storeController = require('../controllers/others/store.controller');
 // const paymentController = require('../controllers/others/payment.controller');
 // const deployController = require('../controllers/others/deploy.controller');
 
 router.route("/check_email").post(commonController.check_email_availability);
 router.route("/sendmail").post(sendMail.sendMailFromStore);
+
+
+router.route("/pdf").post(createPDF.indentPdf);
+
 // router
 //     .route('/campaign_enquiry')
 //     .post(commonController.campaign_enquiry)

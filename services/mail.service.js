@@ -18,6 +18,7 @@ const _this = this;
 
 /** admin mail **/
 exports.sendMailFromAdmin = function (jsonData, callback) {
+
   let mailConfig = jsonData.config;
   let transporter = nodemailer.createTransport(mailConfig.transporter);
   let mailOptions = {
@@ -41,6 +42,7 @@ exports.sendMailFromAdmin = function (jsonData, callback) {
 
 /** store mail **/
 exports.sendMailFromStore = function (jsonData, res) {
+  console.log(jsonData.body);
   let mailConfig = setupConfig.mail_config;
   if (!mailConfig.send_from) {
     mailConfig.send_from = " <" + mailConfig.transporter.auth.user + ">";
